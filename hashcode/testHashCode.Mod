@@ -5,6 +5,7 @@ IMPORT HashCode, Out, out := outooc, S := SYSTEM;
 VAR
   b : BOOLEAN;
   r : REAL;
+  lr: LONGREAL;
   h : HashCode.Hash;
 
 BEGIN
@@ -20,4 +21,10 @@ BEGIN
   h := HashCode.Real(r);
   Out.String("HashCode.Real("); out.Real(r, 0); Out.String(") returns ");
   Out.Int(S.VAL(LONGINT, h), 0); Out.Ln;
+  
+  lr := -39.23009;
+  h := HashCode.LongReal(lr);
+  Out.String("HashCode.LongReal("); out.LongReal(lr, 0); Out.String(") returns ");
+  Out.Int(S.VAL(LONGINT, h), 0); Out.Ln;
+ 
 END testHashCode.

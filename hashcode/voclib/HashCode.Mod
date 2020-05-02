@@ -5,6 +5,7 @@ IMPORT SYSTEM;
 TYPE
   Hash* = LONGINT;
   (**The integer type used to store hash values.  *)
+  harr = ARRAY 2 OF Hash;
 
 CONST
   init* = 257;
@@ -16,13 +17,18 @@ END Boolean;
 
 PROCEDURE Real*(x: REAL): Hash;
 BEGIN
-  RETURN SYSTEM.VAL(LONGINT, x);
+  RETURN SYSTEM.VAL(Hash, x);
 END Real;
 
+PROCEDURE LongReal*(x: LONGREAL): Hash;
+VAR
+  ha : harr;
+BEGIN
+  ha := SYSTEM.VAL(harr, x);
+  RETURN SYSTEM.VAL(Hash, (SYSTEM.VAL(SET, ha[0]) / SYSTEM.VAL(SET, ha[1])));
+END LongReal;
 
 (*
-PROCEDURE Real*(x: REAL): Hash;
-PROCEDURE LongReal*(x: LONGREAL): Hash;
 PROCEDURE Set*(x: SET): Hash;
 PROCEDURE Ptr*(x: SYSTEM.PTR): Hash;
 PROCEDURE CharRegion*(data: ARRAY OF CHAR; start, end: LONGINT): Hash;
