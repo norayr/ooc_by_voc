@@ -11,5 +11,6 @@ all:
 			cd $(VOCBUILD) && $(VOC) -s ../outvoc.Mod ../$(VOCLIB)/HashCode.Mod ../testHashCode.Mod -m
 			cd -
 			sed -i 's/outvoc/outooc/' testHashCode.Mod
+			echo "*** rinning tests ***"
 			bin/testHashCode
 			$(VOCBUILD)/testHashCode
