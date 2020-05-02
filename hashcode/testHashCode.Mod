@@ -8,6 +8,9 @@ VAR
   lr: LONGREAL;
   h : HashCode.Hash;
   s : SET;
+  p : S.PTR;
+  hi: HUGEINT;
+  a : ARRAY 16 OF CHAR;
 
 BEGIN
   h := HashCode.Boolean(TRUE);
@@ -32,5 +35,12 @@ BEGIN
   h := HashCode.Set(s);
   Out.String("HashCode.Set returns ");
   Out.Int(S.VAL(LONGINT, h), 0); Out.Ln;
- 
+
+  hi:= MAX(LONGINT) + 42;
+  p := S.VAL(S.PTR, hi);
+  h := HashCode.Ptr(p);
+  Out.String("HashCode.Ptr returns ");
+  Out.Int(S.VAL(LONGINT, h), 0); Out.Ln;
+
+
 END testHashCode.

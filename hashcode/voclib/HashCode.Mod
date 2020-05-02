@@ -33,9 +33,15 @@ BEGIN
   RETURN SYSTEM.VAL(Hash, x);
 END Set;
 
+PROCEDURE Ptr*(x: SYSTEM.PTR): Hash;
+VAR
+  ha : harr;
+BEGIN
+  ha := SYSTEM.VAL(harr, x);
+  RETURN SYSTEM.VAL(Hash, (SYSTEM.VAL(SET, ha[0]) / SYSTEM.VAL(SET, ha[1])));
+END Ptr;
 
 (*
-PROCEDURE Ptr*(x: SYSTEM.PTR): Hash;
 PROCEDURE CharRegion*(data: ARRAY OF CHAR; start, end: LONGINT): Hash;
 PROCEDURE LongCharRegion*(data: ARRAY OF LONGCHAR; start, end: LONGINT): Hash;
 PROCEDURE UCS4CharRegion*(data: ARRAY OF UCS4CHAR; start, end: LONGINT): Hash;
