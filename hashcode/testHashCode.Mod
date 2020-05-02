@@ -7,6 +7,7 @@ VAR
   r : REAL;
   lr: LONGREAL;
   h : HashCode.Hash;
+  s : SET;
 
 BEGIN
   h := HashCode.Boolean(TRUE);
@@ -25,6 +26,11 @@ BEGIN
   lr := -39.23009;
   h := HashCode.LongReal(lr);
   Out.String("HashCode.LongReal("); out.LongReal(lr, 0); Out.String(") returns ");
+  Out.Int(S.VAL(LONGINT, h), 0); Out.Ln;
+ 
+  s := {1, 3, 5, 7};
+  h := HashCode.Set(s);
+  Out.String("HashCode.Set returns ");
   Out.Int(S.VAL(LONGINT, h), 0); Out.Ln;
  
 END testHashCode.

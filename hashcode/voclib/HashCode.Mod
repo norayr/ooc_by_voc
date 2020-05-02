@@ -28,8 +28,13 @@ BEGIN
   RETURN SYSTEM.VAL(Hash, (SYSTEM.VAL(SET, ha[0]) / SYSTEM.VAL(SET, ha[1])));
 END LongReal;
 
-(*
 PROCEDURE Set*(x: SET): Hash;
+BEGIN
+  RETURN SYSTEM.VAL(Hash, x);
+END Set;
+
+
+(*
 PROCEDURE Ptr*(x: SYSTEM.PTR): Hash;
 PROCEDURE CharRegion*(data: ARRAY OF CHAR; start, end: LONGINT): Hash;
 PROCEDURE LongCharRegion*(data: ARRAY OF LONGCHAR; start, end: LONGINT): Hash;
